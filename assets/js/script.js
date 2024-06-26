@@ -3,6 +3,7 @@ const todoList = document.getElementById("todoList");
 const btnInsert = document.getElementById('btnInsert');
 const segnaposto = document.getElementById('segnaposto');
 const listTodo = [];
+const taskDone = [];
 
 btnInsert.addEventListener('click', function (e) {
     e.preventDefault();
@@ -14,6 +15,8 @@ btnInsert.addEventListener('click', function (e) {
 
 function checkInput() {
     if (todoList.value === "") {
+        return false;
+    } else if (todoList.value === " ") {
         return false;
     } else {
         return true;
@@ -27,33 +30,39 @@ function popolateArray() {
 
 function printList() {
     segnaposto.innerHTML = '';
+    console.log(taskDone);
     for (let i = 0; i < listTodo.length; i++) {
         let newp = document.createElement("p");
-        newp.classList.add("task");
         newp.innerText = listTodo[i];
+        newp.addEventListener("click", function () {
+            this.classList.add("completed");
+        })
         let btnDelete = document.createElement('button');
         btnDelete.setAttribute('type', 'button');
         btnDelete.classList.add("bottone")
-        btnDelete.setAttribute('onclick', `deleteItem(${i})`);
+        btnDelete.addEventListener("click", function () {
+            newp.remove();
+        });
+
+        // btnDelete.setAttribute('onclick', `deleteItem(${i})`);
         btnDelete.innerHTML = `<span class="material-symbols-outlined">
 delete
 </span>`;
         newp.appendChild(btnDelete);
         segnaposto.appendChild(newp);
     };
-    attachComplete();
 }
 
 function deleteItem(index) {
     listTodo.splice(index, 1);
-    printList();
 }
 
-const attachComplete = function () {
-    list = document.querySelectorAll("#segnaposto p")
-        for (let i = 0; i < list.length; i++) {
-        list[i].addEventListener('click', function () {
-        this.classList.add('completed');
-        });
-    };
-}
+
+// const attachComplete = function () {
+//     list = document.querySelectorAll("#segnaposto p")
+//         for (let i = 0; i < list.length; i++) {
+//         list[i].addEventListener('click', function () {
+//         this.classList.add('completed');
+//         });
+//     };
+// }
