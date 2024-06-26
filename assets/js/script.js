@@ -42,6 +42,7 @@ function printList() {
         btnDelete.classList.add("bottone")
         btnDelete.addEventListener("click", function () {
             newp.remove();
+            listTodo.splice(i, 1);
         });
 
         // btnDelete.setAttribute('onclick', `deleteItem(${i})`);
