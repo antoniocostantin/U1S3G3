@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	line-height: 1.2rem;
+	font-size: 1.1rem; 
+    text-align: center;
+
+}
+
+body{
+    background-image: linear-gradient(90deg, #b545cd 28%, #744fab 88%);
+
+}
+
+#myForm{
+    background-image: linear-gradient(90deg, #744fab 28%, #b545cd 88%);
+    margin: auto;
+    margin-top: 10em;
+    padding: 1em ;
+    width: 50%;
+    border-radius: 10px;
+    border: solid 1px antiquewhite;
+}
+
+
+
+#myForm label{
+    color: #b545cd;
+    padding-left: 1em;
+}
+
+#myForm input{
+    border-radius: 5px;
+    border: solid 1px;
+    background-color: lightgray;
+}
+
+#myForm button{
+    height: 90%;
+    border-radius: 5px;
+    background-color: #774ead;
+    border: solid 1px antiquewhite;
+    padding: 0.1em;
+    color: #b545cd;
+
+}
