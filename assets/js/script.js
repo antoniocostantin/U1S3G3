@@ -4,37 +4,59 @@ const btnInsert = document.getElementById('btnInsert');
 const segnaposto = document.getElementById('segnaposto');
 const listTodo = [];
 
+btnInsert.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!checkInput()) return;
+    popolateArray();
+    printList();
+    attachComplete();
+    myForm.reset();
+});
+
 function checkInput() {
-    if (todoList.value === '') {
+    if (todoList.value === "") {
         return false;
     } else {
         return true;
     }
 }
 
-btnInsert.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!checkInput()) return;
-    popolateArray();
-    printList();
-    myForm.reset();
-});
-
 function popolateArray() {
     listTodo.push(todoList.value);
-    console.log(todoList);
+    console.log(listTodo);
 }
 
 function printList() {
     segnaposto.innerHTML = '';
     for (let i = 0; i < listTodo.length; i++) {
-        let newp = document.createElement('h1');
-        // newp.innerText = listTodo[i];
-        // let btnDelete = document.createElement('button');
-        // btnDelete.setAttribute('type', 'button');
-        // btnDelete.setAttribute('onclick', `deleteItem(${i});`);
-        // btnDelete.innerText = "lol";
-        newp.appendChild(myForm);
-        // todoList.appendChild(newp);
+        let newp = document.createElement("p");
+        newp.classList.add("task");
+        newp.innerText = listTodo[i];
+        let btnDelete = document.createElement('button');
+        btnDelete.setAttribute('type', 'button');
+        btnDelete.classList.add("bottone")
+        btnDelete.setAttribute('onclick', `deleteItem(${i})`);
+        btnDelete.innerHTML = `<span class="material-symbols-outlined">
+delete
+</span>`;
+        newp.appendChild(btnDelete);
+        segnaposto.appendChild(newp);
     }
 }
+
+function deleteItem(index) {
+    listTodo.splice(index, 1);
+    printList();
+    // for(let i = 0; i < task.length)
+    attachComplete();
+}
+
+const attachComplete = function () {
+    task = document.querySelectorAll('.task')
+    for (let i = 0; i < task.length; i++) {
+      task[i].addEventListener('click', function () {
+        this.classList.toggle('completed')
+      })
+    }
+  }
+
