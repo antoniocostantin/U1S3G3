@@ -9,7 +9,6 @@ btnInsert.addEventListener('click', function (e) {
     if (!checkInput()) return;
     popolateArray();
     printList();
-    attachComplete();
     myForm.reset();
 });
 
@@ -41,22 +40,20 @@ delete
 </span>`;
         newp.appendChild(btnDelete);
         segnaposto.appendChild(newp);
-    }
+    };
+    attachComplete();
 }
 
 function deleteItem(index) {
     listTodo.splice(index, 1);
     printList();
-    // for(let i = 0; i < task.length)
-    attachComplete();
 }
 
 const attachComplete = function () {
-    task = document.querySelectorAll('.task')
-    for (let i = 0; i < task.length; i++) {
-      task[i].addEventListener('click', function () {
-        this.classList.toggle('completed')
-      })
-    }
-  }
-
+    list = document.querySelectorAll("#segnaposto p")
+        for (let i = 0; i < list.length; i++) {
+        list[i].addEventListener('click', function () {
+        this.classList.add('completed');
+        });
+    };
+}

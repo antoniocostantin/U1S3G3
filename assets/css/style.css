@@ -57,6 +57,8 @@ body {
     width: 60%;
     margin: 1em auto;
     text-align: left;
+    cursor: pointer;
+    
 }
 
 #segnaposto p:nth-child(odd){
@@ -91,9 +93,10 @@ body {
 .completed{
     color: green;
     opacity: 0.6;
+    text-decoration: line-through;
 }
 
 .completed::before{
     content: "\22CE";
-    padding-right: 0.5em;
+    padding-right: 0.5em;  
 }
